@@ -42,7 +42,7 @@ namespace OOPSReview
                 //takes internal values and returns it to the user
                 return _Sides;
             }
-            set
+            private set
             {
                 //Takes the supplied user value and places it in the internal private data member
                 //The supplied user value is placed into a special variable called "value"
@@ -91,7 +91,7 @@ namespace OOPSReview
         //  the system will create, internally, a data storage area of the appropriate datatype and manage the area
         //  the only way ot access the data of an auto implemented property is via the property
         //  usually used when there is no need for any internal validation or other property logic
-        public int FaceValue { get; set; }
+        public int FaceValue { get; private set; }
         
         //Constructors
         //Constructors are optional, in the case that one is not specified the system will provide default assignments for each property
