@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Text Boxes";
+}
+@section banner{
+    <h1>Text Boxes</h1>
+}
+<!-- this html will appear in the renderbody-->
+<form id="formy" method="post">
+    <div class="col-md-6">
+        <label for="inputleft">LEFT</label>
+        <input type="text" id="inputleft" name="inputleft" placeholder="Enter Your Name!"/>
+        <button type="submit" id="formbutton" name="formbutton" class="btn" value="left">PRESS LEFT</button>
+    </div>
+    <div class="col-md-6">
+        <label for="inputright">RIGHT</label>
+        <input type="text" id="inputright" name="inputright" placeholder="Enter Your Favourite Color!" />
+        <button type="submit" id="formbutton" name="formbutton" class="btn" value="right">PRESS RIGHT</button>
+
+    </div>
+</form>
