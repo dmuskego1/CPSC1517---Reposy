@@ -1,20 +1,43 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
     Page.Title = "Text Boxes";
+
+    //The processing of this page is physically done from top to bottom
+    //This means that logic HAS to be in the correct order
+
+    //capture the incomming "post" method data
+    //all data coming in will be strings
+    var leftSide = Request.Form["inputleft"];
+    var rightSide = Request.Form["inputright"];
+    var theButton = Request.Form["formbutton"];
+
 }
 @section banner{
     <h1>Text Boxes</h1>
 }
+
+@{ 
+    if (IsPost)
+    {
+        <p>You have sent this form back IsPost is True</p>
+    }
+    else
+    {
+        <p>You have not yet sent this form back! >:( IsPost is false</p>
+    }
+}
+
+
 <!-- this html will appear in the renderbody-->
 <form id="formy" method="post">
     <div class="col-md-6">
         <label for="inputleft">LEFT</label>
-        <input type="text" id="inputleft" name="inputleft" placeholder="Enter Your Name!"/>
+        <input type="text" id="inputleft" name="inputleft" placeholder="Enter Your Name!" value="@leftSide"/>
         <button type="submit" id="formbutton" name="formbutton" class="btn" value="left">PRESS LEFT</button>
     </div>
     <div class="col-md-6">
         <label for="inputright">RIGHT</label>
-        <input type="text" id="inputright" name="inputright" placeholder="Enter Your Favourite Color!" />
+        <input type="text" id="inputright" name="inputright" placeholder="Enter Your Favourite Color!" value="@rightSide"/>
         <button type="submit" id="formbutton" name="formbutton" class="btn" value="right">PRESS RIGHT</button>
 
     </div>
