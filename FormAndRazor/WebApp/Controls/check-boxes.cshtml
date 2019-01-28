@@ -1,9 +1,37 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
+    Page.Title = "Check Boxes";
+    var game = Request.Form["gamegroup"];
+    if (game == null)
+    {
+        game = "";
+    }
+}
+@section head{
+    <link href="~/Content/MyCustomStyles.css" rel="stylesheet" />
 }
 
 @section banner{
 <h1>Check Boxes</h1>
 }
 
-
+<form id="theform" method="post">
+    <div class="row">
+        <div class="col-md-offset-2">
+            <label id="gamegroup">Select your favourite Gaming Platform</label>
+            <br />
+            <!--What makes a checkbutton group is the fact that the id si the same on each control if you wish to multiple check button groups then each group needs a unique id-->
+            <input type="checkbox" id="gamegroup" name="gamegroup" value="PS4" checked="@(game.Equals("PS4") ? true : false)" />Play Station 4<br />
+            <input type="checkbox" id="gamegroup" name="gamegroup" value="PC" checked="@(game.Equals("PC") ? true : false)" />Computer<br />
+            <input type="checkbox" id="gamegroup" name="gamegroup" value="XBone" checked="@(game.Equals("XBone") ? true : false)" />XBox One<br />
+            <input type="checkbox" id="gamegroup" name="gamegroup" value="Switch" checked="@(game.Equals("Switch") ? true : false)" />Switch<br />
+            <input type="checkbox" id="gamegroup" name="gamegroup" value="Cell" checked="@(game.Equals("Cell") ? true : false)" />Cellphone<br />
+            <input type="checkbox" id="gamegroup" name="gamegroup" value="Ipad" checked="@(game.Equals("Ipad") ? true : false)" />Apple :(<br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3">
+            <button type="submit" class="btn btn-primary" id="formbutton" name="formbutton" value="submit">SUBMIT</button>
+        </div>
+    </div>
+</form>

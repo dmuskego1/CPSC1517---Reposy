@@ -1,8 +1,80 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
+    Page.Title = "Radio Buttons";
+    //obtain any incoming values
+    var language = Request.Form["languagegroup"];
+    var script = Request.Form["scriptgroup"];
+    if(language == null)
+    {
+        language = "";
+    }
+    if (script == null)
+    {
+        script = "";
+    }
 }
+@section head{
+    <link href="~/Content/MyCustomStyles.css" rel="stylesheet" />
+}
+
 
 @section banner{
     <h1>Radio Buttons</h1>
 }
 
+
+@if (IsPost)
+{
+    if (language.IsEmpty() || script.IsEmpty())
+    {
+        <p><span style="color:firebrick;">make a selection from both coding and scripting</p>
+    }
+    else
+    {
+        //Validation has been passed
+        if (language.Equals("C#", StringComparison.OrdinalIgnoreCase))
+        {
+            <p>You will greatly Enjoy the CPSC1517 course as we use C#</p>
+        }
+        else
+        {
+            <p>Too bad! the CPSC1517 course uses C#.</p>
+        }
+        if (language.Equals("RAZOR", StringComparison.OrdinalIgnoreCase))
+        {
+            <p>You will greatly Enjoy the CPSC1517 course as we use Razor.</p>
+        }
+        else
+        {
+            <p>Too bad! the CPSC1517 course uses Razor.</p>
+        }
+    }
+}
+
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="col-md-offset-2">
+            <label id="languagegroup">Select your favourite programming language</label>
+            <br />
+            <!--What makes a radiobutton group is the fact that the id si the same on each control if you wish to multiple radio button groups then each group needs a unique id-->
+            <input type="radio" id="languagegroup" name="languagegroup" value="C#" checked="@(language.Equals("C#"))"/>C#<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="VB" checked="@(language.Equals("VB"))"/>Visual Basic<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="ObjectiveC" checked="@(language.Equals("ObjectiveC"))"/>ObjectiveC<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="Cobol" checked="@(language.Equals("Cobol"))"/>Cobol<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="Fortran" checked="@(language.Equals("Fortran"))"/>Fortran<br />
+            <input type="radio" id="languagegroup" name="languagegroup" value="Pascal" checked="@(language.Equals("Pascal"))"/>Pascal<br />
+            <br />
+            <label id="scriptgroup">Select your favourite scripting code</label>
+            <br />
+            <input type="radio" id="scriptgroup" name="scriptgroup" value="JS" checked="@(script.Equals("JS") ? true : false)"/>JavaScript<br />
+            <input type="radio" id="scriptgroup" name="scriptgroup" value="Razor" checked="@(script.Equals("Razor") ? true : false)"/>Razor<br />
+            <input type="radio" id="scriptgroup" name="scriptgroup" value="PHP" checked="@(script.Equals("PHP") ? true : false)"/>PHP<br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3">
+            <button type="submit" class="btn btn-primary" id="formbutton" name="formbutton" value="submit">SUBMIT</button>
+        </div>
+    </div>
+</form>
