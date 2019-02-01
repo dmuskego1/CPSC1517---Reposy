@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "DB - Single Query";
+}
+
+@section banner{
+    <h1>Database: Single Query</h1>
+}
+
+@{ 
+    var searchArg = Request.Form["searchArg"];
+    var regionID = "";
+    var regionName = "";
+    //remember ont he first page pass the form has not yet been displayed
+    //search arg will be null
+    //looking up an sql table by primary key using a value of null will not work
+    //the arg must be set t
+    if (string.IsNullOrEmpty(searchArg))
+    {
+        searchArg = "0";
+    }
+
+    //connect to the database "pipeline"
+    var db = Database.Open("NorthwindDB");
+
+    //create a command to be executed on the database
+    //this command can be coded over multiple physical lines as a concatenation
+    //values which will be passed with the command are coded with placeholders
+    //a placeholder is @n where n is an index value
+    //on execution the placeholder will be changed to the supplied arguement values
+    var queryCommand = "select RegionID, RegionDescription "
+                     + "from Region "
+                     + "where RegionID = @0";
+
+    //execute the command on the connected database
+    //capture the results of the execution
+    //there are a few ways of doing it
+    //.QuerySingle() used when one expects a single record to be returned
+    //.Query() used when one expects zer, one, or more records to be returned
+    //.QueryValue() used when one expects a single value(not record, one column) to be returned 
+
+    var results = db.QuerySingle(queryCommand,searchArg);
+}
+
+<form id="theForm" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <label for="searchArg">Enter Region ID: </label>
+            <input type="text" id="searchArg" name="searchArg" placeholder="Enter Regeion ID" value="@searchArg"/>
+            <br />
+            <button type="submit" id="formbutton" name="formbutton" class="btn btn-primary" value="search">SEARCH</button>
+            &nbsp; &nbsp;
+            <button type="submit" id="formbutton" name="formbutton" class="btn" value="clear">CLEAR</button>
+        </div>
+        <label for="RegionID">Region ID: </label>
+        <input type="text" id="regionID" name="regionID"  value="@regionID"/>
+        <br />
+        <label for="regionName">Region Name</label>
+        <input type="text" id="regionName" name="regionName" value="@regionName"/>
+    </div>
+</form>
+
