@@ -11,6 +11,7 @@
     var searchArg = Request.Form["searchArg"];
     var regionID = "";
     var regionName = "";
+    var theButton = Request.Form["formButton"];
     //remember ont he first page pass the form has not yet been displayed
     //search arg will be null
     //looking up an sql table by primary key using a value of null will not work
@@ -42,11 +43,45 @@
     var results = db.QuerySingle(queryCommand,searchArg);
 }
 
+
+@{
+    if (IsPost) {
+        if (theButton.Equals("clear"))
+        {
+            searchArg = "0";
+            regionID = "";
+            regionName = "";
+        }
+        else
+        {
+            //search if any records were returned from the query
+            //if no record was returned from the query then the results will be null
+            if(results == null)
+            {
+                <p><span style="color:blue">No data found for the region ID @searchArg</span></p>
+                regionID = "";
+                regionName = "";
+            }
+            else
+            {
+                //a record was actually retrieved
+                //set your output fields using the results
+                //  how does one access a data field on the results data record(s)
+                //  A.) Via a index xxxx[columnIndex]
+                //  B.) Via the Column Title xxxx.columntitlename
+                <p><span style="color="green"">Found</span></p>
+                regionID = results[0].ToString();
+                regionName = results.RegionDescription;
+            }
+        }
+    }
+}
+
 <form id="theForm" method="post">
     <div class="row">
         <div class="col-md-4">
             <label for="searchArg">Enter Region ID: </label>
-            <input type="text" id="searchArg" name="searchArg" placeholder="Enter Regeion ID" value="@searchArg"/>
+            <input type="number" id="searchArg" name="searchArg" placeholder="Enter Regeion ID" step="1" min="0"value="@searchArg"/>
             <br />
             <button type="submit" id="formbutton" name="formbutton" class="btn btn-primary" value="search">SEARCH</button>
             &nbsp; &nbsp;
