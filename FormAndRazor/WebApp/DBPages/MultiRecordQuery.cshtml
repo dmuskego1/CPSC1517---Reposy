@@ -16,7 +16,7 @@
     //get the data for the dropdownlist
     //this needs to be done prior using the collection
     //   in the loop under the <Select> tag
-    var ddlcommand = "SELECT CategoryId, CategoryName "
+    var ddlcommand = "SELECT CategoryID, CategoryName "
                     + "FROM Categories "
                     + "ORDER BY CategoryName";
     var ddlResults = db.Query(ddlcommand);
@@ -42,7 +42,7 @@
 
         //query the database using the choice from the dropdown list
 
-        var queryCommand = "select ProductID "
+        var queryCommand = "select ProductId "
                          + "from Products "
                          + "where CategoryID = @0";
         var results = db.Query(queryCommand,categorylist);
@@ -89,7 +89,9 @@
                 <!--  loop code here-->
                 @foreach (var categoryItem in ddlResults)
                 {
-                    <option value="categoryItem.CategoryID">@categoryItem.CategoryName</option>
+                    <option value="@categoryItem.CategoryID">
+                        @categoryItem[1]
+                    </option>
                 }
             </select>
             &nbsp;&nbsp;
