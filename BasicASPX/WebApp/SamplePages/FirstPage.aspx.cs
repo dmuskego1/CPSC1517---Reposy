@@ -15,7 +15,7 @@ namespace WebApp.SamplePages
             //This Method is executed before any of your event methods
 
         }
-        protected void PressMe_Click()
+        protected void PressMe_Click(object sender, EventArgs e)
         {
             Output.Text = "Hello There " + YourName.Text;
         }
