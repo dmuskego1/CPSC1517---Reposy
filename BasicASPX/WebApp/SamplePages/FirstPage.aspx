@@ -4,7 +4,7 @@
     &nbsp&nbsp
     <asp:TextBox ID="YourName" runat="server"></asp:TextBox>
     <br/>
-    <asp:Button ID="PressMe" runat="server" Text="Press Me" />
+    <asp:Button ID="PressMe" runat="server" Text="Press Me" OnClick="PressMe_Click" />
     <br />
-    <asp:Literal ID="Output" runat="server"></asp:Literal>
+    <asp:Label ID="Output" runat="server" Text=""></asp:Label>
 </asp:Content>
