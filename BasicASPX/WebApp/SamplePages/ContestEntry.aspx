@@ -16,7 +16,56 @@
 
         </div>
     </div>
-  
+    <asp:RequiredFieldValidator ControlToValidate="FirstName" ID="RequiredFieldFirstName" runat="server" 
+                                ErrorMessage="First Name is required." Display="None" SetFocusOnError="true" ForeColor="Firebrick">
+    </asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ControlToValidate="LastName" ID="RequiredFieldLastName" runat="server" 
+                                ErrorMessage="Last Name is required." Display="None" SetFocusOnError="true" ForeColor="Firebrick">
+    </asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ControlToValidate="StreetAddress1" ID="RequiredFieldAddress" runat="server" 
+                                ErrorMessage="One address is required." Display="None" SetFocusOnError="true" ForeColor="Firebrick">
+    </asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ControlToValidate="City" ID="RequiredFieldCity" runat="server" 
+                                ErrorMessage="City is required." Display="None" SetFocusOnError="true" ForeColor="Firebrick">
+    </asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ControlToValidate="PostalCode" ID="RequiredFieldPostalCode" runat="server" 
+                                ErrorMessage="A postal code is required." Display="None" SetFocusOnError="true" ForeColor="Firebrick">
+    </asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ControlToValidate="EmailAddress" ID="RequiredFieldEmail" runat="server" 
+                                ErrorMessage="An Email Address is required." Display="None" SetFocusOnError="true" ForeColor="Firebrick">
+    </asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ControlToValidate="CheckAnswer" ID="RequiredFieldCheckAnswer" runat="server" 
+                                ErrorMessage="You must answer the question." Display="None" SetFocusOnError="true" ForeColor="Firebrick">
+    </asp:RequiredFieldValidator>
+
+    <%-- there is no field to demonstrate a range validation on this form the streetaddress2 will be used for demonstration --%>
+    <asp:RangeValidator ControlToValidate="StreetAddress2" ID="RangeValidatorStreetAddress2" runat="server" 
+        ErrorMessage="Enter 1 to 5 according to liking(1 strongly like, 5 strongly dislike)" Display="None" SetFocusOnError="true" ForeColor="Firebrick"
+        Type="Integer" MinimumValue="1" MaximumValue="5" >
+    </asp:RangeValidator>
+    <asp:RegularExpressionValidator ControlToValidate="PostalCode" ID="RegularExpressionPostalCode" runat="server" 
+        ErrorMessage="Invalid Postal Code." Display="None" SetFocusOnError="true" ForeColor="Firebrick"
+        ValidationExpression="[a-zA-Z][1-9][a-zA-Z][1-9][a-zA-Z][1-9]">
+    </asp:RegularExpressionValidator>
+    <%-- sample of a datatype check using compare--%>
+<%--    <asp:CompareValidator ControlToValidate="CheckAnswer" ID="CompareValidatorCheckAnswer" runat="server" 
+        ErrorMessage="That answer is not a number" Display="None" SetFocusOnError="true" ForeColor="Firebrick"
+        type="Integer" Operator="DataTypeCheck">
+    </asp:CompareValidator>--%>
+    <%-- sample of a constant value using compare --%>
+    <asp:CompareValidator ControlToValidate="CheckAnswer" ID="CompareValidatorCheckAnswer" runat="server" 
+        ErrorMessage="That answer is not a number" Display="None" SetFocusOnError="true" ForeColor="Firebrick"
+        type="Integer" Operator="Equal" ValueToCompare="18">
+    </asp:CompareValidator>
+    <%-- Sample of a two field comparing using compare we have no fields to test assume a password field--%>
+<%--    <asp:CompareValidator ControlToValidate="ConfirmPassword" ID="CompareValidatorPassword" runat="server" 
+        ErrorMessage="Password confirmation doesnt match" Display="None" SetFocusOnError="true" ForeColor="Firebrick"
+        type="string" Operator="Equal" ControlToCompare="Password">
+    </asp:CompareValidator>--%>
+
+    <%--display all erros in one place using the validation summary control--%>
+    <asp:ValidationSummary ID="ValidationSummaryContestEntry" runat="server"
+        HeaderText="Correct the following concerns and resubmit" CssClass="alert alert-danger"/>
     <div class="row">
         <div class ="col-md-6">
             <fieldset class="form-horizontal">
@@ -85,10 +134,14 @@
         <div class="col-md-6">   
             <div class="col-md-offset-2">
                 <p>
-                    <asp:Button ID="Submit" runat="server" Text="Submit" />&nbsp;&nbsp;
-                    <asp:Button ID="Clear" runat="server" Text="Clear" CausesValidation="true"  />
+                    <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />&nbsp;&nbsp;
+                    <asp:Button ID="Clear" runat="server" Text="Clear" CausesValidation="true" OnClick="Clear_Click"  />
                 </p>
-                <asp:Label ID="Message" runat="server" ></asp:Label><br />
+                <asp:Label ID="Message" runat="server" ></asp:Label>
+                
+                <br /><hr style="width:5px;"/>
+                <asp:GridView ID="ContestantList" runat="server">
+                </asp:GridView>
             
             </div>
         </div>
