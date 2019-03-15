@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{C260DD09-AC5F-406E-8DD0-42EA63077275}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindSystem", "NorthwindSystem\NorthwindSystem.csproj", "{595DB3A7-2EFB-46C4-B169-059EADF41CDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindSystem", "NorthwindSystem\NorthwindSystem.csproj", "{723787DF-0463-4EA0-A6F6-E294C7224AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindData", "NorthwindData\NorthwindData.csproj", "{4002B11D-4251-4FFD-8DC0-2BB877F48087}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindData", "NorthwindData\NorthwindData.csproj", "{78EB2C68-AF59-4B13-9DC4-141CCA0B3F41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{C260DD09-AC5F-406E-8DD0-42EA63077275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C260DD09-AC5F-406E-8DD0-42EA63077275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C260DD09-AC5F-406E-8DD0-42EA63077275}.Release|Any CPU.Build.0 = Release|Any CPU
-		{595DB3A7-2EFB-46C4-B169-059EADF41CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{595DB3A7-2EFB-46C4-B169-059EADF41CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{595DB3A7-2EFB-46C4-B169-059EADF41CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{595DB3A7-2EFB-46C4-B169-059EADF41CDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4002B11D-4251-4FFD-8DC0-2BB877F48087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4002B11D-4251-4FFD-8DC0-2BB877F48087}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4002B11D-4251-4FFD-8DC0-2BB877F48087}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4002B11D-4251-4FFD-8DC0-2BB877F48087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723787DF-0463-4EA0-A6F6-E294C7224AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723787DF-0463-4EA0-A6F6-E294C7224AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723787DF-0463-4EA0-A6F6-E294C7224AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723787DF-0463-4EA0-A6F6-E294C7224AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78EB2C68-AF59-4B13-9DC4-141CCA0B3F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78EB2C68-AF59-4B13-9DC4-141CCA0B3F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78EB2C68-AF59-4B13-9DC4-141CCA0B3F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78EB2C68-AF59-4B13-9DC4-141CCA0B3F41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
